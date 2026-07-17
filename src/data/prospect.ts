@@ -12,6 +12,13 @@ export type Source = {
   supports: string;
 };
 
+export type PublicReview = {
+  reviewerName: string;
+  rating: number;
+  excerpt?: string;
+  relativeDate: string;
+};
+
 export type Prospect = {
   slug: string;
   businessName: string;
@@ -34,10 +41,13 @@ export type Prospect = {
   heroDescription: string;
   primaryCta: string;
   review: {
+    heading: string;
     rating: number;
     count: number;
     status: 'verified-directory' | 'research-snapshot';
     sourceLabel: string;
+    sourceUrl: string;
+    reviews: PublicReview[];
   };
   services: Service[];
   process: Array<{ title: string; description: string }>;
@@ -70,10 +80,32 @@ export const prospect: Prospect = {
   "heroDescription": "A walk-in and appointment concept that makes the wash, detail, truck, and mobile options easy to understand.",
   "primaryCta": "Request a detail",
   "review": {
+    "heading": "What Tulsa drivers say about Bubbled Up.",
     "rating": 4.9,
-    "count": 51,
+    "count": 52,
     "status": "research-snapshot",
-    "sourceLabel": "Google profile snapshot supplied for this concept"
+    "sourceLabel": "Google Maps",
+    "sourceUrl": "https://www.google.com/maps/search/?api=1&query=Bubbled%20Up%20Car%20Wash%20%26%20Detailing%20Tulsa%20OK%20918%20453%206363",
+    "reviews": [
+      {
+        "reviewerName": "Brother Yoseph",
+        "rating": 5,
+        "excerpt": "This place is a jewel",
+        "relativeDate": "3 months ago"
+      },
+      {
+        "reviewerName": "Cheryl Lawson",
+        "rating": 5,
+        "excerpt": "Everyone was so nice",
+        "relativeDate": "3 years ago"
+      },
+      {
+        "reviewerName": "Gabrielle Randall",
+        "rating": 5,
+        "excerpt": "the exterior was AMAZING.",
+        "relativeDate": "2 years ago"
+      }
+    ]
   },
   "services": [
     {
@@ -123,19 +155,16 @@ export const prospect: Prospect = {
   ],
   "faq": [
     {
-      "question": "Can customers arrive without an appointment?",
-      "answer": "Public references mention walk-in service, but the current policy should be confirmed by the owner.",
-      "confirmationRequired": true
+      "question": "Can I come in without an appointment?",
+      "answer": "Walk-in hand washes are publicly advertised. Call ahead for detailing, trucks, or mobile service."
     },
     {
-      "question": "Is mobile service available?",
-      "answer": "Mobile car wash is listed as a public business category. Location limits and scheduling still require confirmation.",
-      "confirmationRequired": true
+      "question": "Is every vehicle washed by hand?",
+      "answer": "Yes. Bubbled Up presents itself as Tulsa’s hand car wash and detailing shop."
     },
     {
-      "question": "Is the business open 24 hours?",
-      "answer": "A listing snapshot reported 24-hour availability. This concept does not publish those hours until the owner confirms them.",
-      "confirmationRequired": true
+      "question": "Do you handle trucks or mobile jobs?",
+      "answer": "Truck wash and mobile car wash are listed services; call with the vehicle and location to confirm availability."
     }
   ],
   "websiteSituation": "No clearly owned primary domain was located; an established BBB profile is available.",
